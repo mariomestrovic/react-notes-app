@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import * as firebase from "firebase"
 
 class NoteCreator extends Component {
-		constructor() {
+	   	constructor() {
 			super()
 			this.state = {
 				newNote: ""
@@ -30,19 +30,19 @@ class NoteCreator extends Component {
         	}
 	    }
 
-	render() {
-		return (
-			<div className="creator-wrapper">
-			<input
-				name="newNote"
-				type="text"
-				className="note-input"
-				placeholder="Write your note here..."
-				onChange={this.handleChange}
-				value={this.state.newNote}
-			/>
-			<button className="create-note" onClick={this.addNote}>Add a note</button>
-			</div>
+		render() {
+			return (
+				<div className="creator-wrapper">
+				<input
+					name="newNote"
+					type="text"
+					className="note-input"
+					placeholder="Write your note here..."
+					onChange={this.handleChange}
+					value={this.state.newNote}
+				/>
+				<button className="create-note" onClick={this.addNote}>Add a note</button>
+				</div>
 		)
 	}
 }

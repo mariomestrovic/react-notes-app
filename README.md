@@ -1,5 +1,5 @@
 ## Overview
-Notes app using React and Firebase that lets you create and delete notes.
+Notes app using React that lets you create and delete notes.
 
 ## Installation
 `git clone https://github.com/mariomestrovic/react-notes-app.git`  

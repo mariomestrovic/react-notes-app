@@ -8,9 +8,17 @@ body {
   height: 150px;
   display: flex;
   align-items: center;
-  background: #D36E6D;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, ##DA7274, ##D36E6D);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #DA7274, #D36E6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #d36e6d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #da7274,
+    #d36e6d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #da7274,
+    #d36e6d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .header-container > img {
@@ -24,16 +32,16 @@ body {
   font-size: 50px;
   margin-left: 60px;
 }
-    
+
 /*note creator*/
 
-.creator-wrapper{
+.creator-wrapper {
   width: 100%;
   margin-top: 10px;
   display: flex;
 }
 
-.note-input {  
+.note-input {
   height: 50px;
   width: 50%;
   margin: 0px;
@@ -41,20 +49,21 @@ body {
   border: 1px solid black;
   margin-left: 15%;
   font-size: 1.2em;
-  background-color: #FDFBBD;
+  background-color: #fdfbbd;
   border-radius: 10px;
   outline: none;
   display: flex;
   font-family: "Georgia", serif;
+  justify-content: center;
 }
 
-.note-input:focus{
-  background-color: #E4F1FE;
+.note-input:focus {
+  background-color: #e4f1fe;
   color: #111;
   transition: 0.2s ease-in;
 }
 
-.create-note {  
+.create-note {
   width: 15%;
   height: 60px;
   transition: 0.4s ease-out;
@@ -74,60 +83,58 @@ body {
 }
 
 .create-note:hover {
-  background: #D36E6D;
+  background: #d36e6d;
 }
 
 /*note*/
 
- .notes-wrapper {
+.notes-wrapper {
   padding: 10px 65px;
-} 
+}
 
 .note {
-  display: inline-block;
   float: left;
   position: relative;
 }
 
-.note-content{   
-  justify-content: flex-start; 
+.note-content {
+  justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid #cecece;
   font-family: "Shadows Into Light", cursive;
   font-weight: 100;
-  font-size: 2.3em;
-  padding: 0px 5px;
+  font-size: 1.7em;
   border: none;
   height: 300px;
   width: 300px;
-  background-color: #fffa5c;  
-  overflow:auto;
+  background-color: #fffa5c;
+  overflow: auto;
   margin: 15px;
-  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);     /* Firefox */
-  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);     /* Safari+Chrome */
-  box-shadow: 5px 5px 7px rgba(33,33,33,.7);     /* Opera */
+  -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1); /* Firefox */
+  -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7); /* Safari+Chrome */
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7); /* Opera */
 }
 
 .note-content > p {
-  padding: 0px 25px
+  padding: 0px 25px;
 }
 
-.remove {   
+.remove {
   position: absolute;
   top: 75%;
   left: 75%;
   cursor: pointer;
 }
 
-.remove:hover {   
-  transform: scale(1.2)
+.remove:hover {
+  transform: scale(1.2);
 }
 
-.formWrapper{
+.formWrapper {
   margin: auto;
 }
 
-.noteButton{
+.noteButton {
   border: none;
   margin: 0px;
   border-top-right-radius: 4px;
@@ -140,13 +147,13 @@ body {
   transition: 0.2s ease-out;
 }
 
-.noteButton:hover{
-  background-color: #02BA85;
+.noteButton:hover {
+  background-color: #02ba85;
   color: #fff;
   transition: 0.2s ease-out;
 }
 
-.noteInput{
+.noteInput {
   width: 800px;
   min-width: 800px;
   font-size: 1.3em;
@@ -154,13 +161,13 @@ body {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   font-family: "Droid Sans", sans-serif;
-  background-color: rgba(34,49,63,0.8);
+  background-color: rgba(34, 49, 63, 0.8);
   color: #fff;
   transition: 0.2s ease-out;
 }
 
-.noteInput:focus{
-  background-color: #E4F1FE;
+.noteInput:focus {
+  background-color: #e4f1fe;
   color: #111;
   transition: 0.2s ease-in;
 }

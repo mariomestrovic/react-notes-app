@@ -1,58 +1,55 @@
-import React, {Component} from "react"
-import "./App.css"
-import * as firebase from "firebase"
-import Header from "./Components/Header"
-import NoteCreator from "./Components/NoteCreator"
-import NoteItem from "./Components/NoteItem"
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./Components/Header";
+import NoteCreator from "./Components/NoteCreator";
+import NoteItem from "./Components/NoteItem";
+import NotesList from "./Components/NotesList";
+import { nanoid } from "nanoid";
 
+export default function App() {
+  const [notes, setNotes] = useState(
+    () => JSON.parse(localStorage.getItem("notes")) || []
+  );
 
-class App extends Component {
-  constructor() {
-      super()  
-      this.state = {
-        notes: []
-      }
+  const [noteText, setNoteText] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  function createNewNote(noteId) {
+    if (noteText.trim() === "") {
+      window.alert("Please enter a note!");
+      return;
+    }
+    const newNote = {
+      id: nanoid(),
+      text: noteText,
+    };
+    setNotes((prevNotes) => [newNote, ...prevNotes]);
+    setNoteText("");
   }
 
-  componentDidMount() {
-    this.db = firebase.database()
-    this.listenForChange()
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      createNewNote();
+    }
   }
 
-  listenForChange() {
-    this.db.ref("notes").on("child_added", snapshot => {
-      let note = {
-        id: snapshot.key,
-        note: snapshot.val().note
-      }
-
-      let notes = this.state.notes
-      notes.push(note)
-
-      this.setState({
-        notes: notes
-      })
-    })
-
-    this.db.ref("notes").on("child_removed", snapshot => {
-      let notes = this.state.notes
-      notes = notes.filter(note => note.id !== snapshot.key)
-
-      this.setState({
-        notes: notes
-      })
-    })
+  function deleteNote(noteId) {
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
   }
 
-  render() {
-    return (
-      <div className="app">
-          <Header />
-          <NoteCreator />
-          <NoteItem notes={this.state.notes} />
-      </div>
-    )
-  }
+  return (
+    <div className="app">
+      <Header />
+      <NoteCreator
+        createNewNote={createNewNote}
+        value={noteText}
+        setNoteText={setNoteText}
+        handleKeyPress={handleKeyPress}
+      />
+      <NotesList notes={notes} deleteNote={deleteNote} />
+    </div>
+  );
 }
-
-export default App

@@ -1,35 +1,17 @@
-import React, { Component } from "react"
-import * as firebase from "firebase"
+import React from "react";
 
-class NoteItem extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    removeNote(id) {
-    firebase.database().ref('notes').child(id).remove()
-    }
-
-    render() {
-      return (
-        <section className="notes-wrapper">
-          <div className="notes">
-            {this.props.notes.map(note => (
-              <div className="note" key={note.id}>
-                <img src="https://img.icons8.com/plasticine/48/000000/filled-trash.png"
-                     alt="delete-note" 
-                     className="remove" 
-                     onClick={() => this.removeNote(note.id)} 
-                  />
-                <div className="note-content">
-                  <p>{note.note}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        )
-    }
+export default function NoteItem({ id, text, deleteNote }) {
+  return (
+    <div className="note">
+      <img
+        src="https://img.icons8.com/plasticine/48/000000/filled-trash.png"
+        alt="delete-note"
+        className="remove"
+        onClick={() => deleteNote(id)}
+      />
+      <div className="note-content">
+        <p>{text}</p>
+      </div>
+    </div>
+  );
 }
-
-export default NoteItem
